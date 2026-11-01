@@ -54,7 +54,7 @@ A high-performance, cinematic creative engineering portfolio designed with an ed
 
 ```bash
 # Clone the repository
-git clone https://github.com/aisha-khan/aisha-khan-portfolio.git
+git clone https://github.com/aishakhan1814/aisha-khan-portfolio.git
 
 # Navigate into project directory
 cd aisha-khan-portfolio
