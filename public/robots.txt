@@ -1,0 +1,9 @@
+# robots.txt for Aisha Khan's Developer Portfolio
+# https://[CONFIGURE_PRODUCTION_URL]
+
+User-agent: *
+Allow: /
+
+# Sitemap reference
+# Update [CONFIGURE_PRODUCTION_URL] with the canonical production domain upon deployment
+# Sitemap: https://[CONFIGURE_PRODUCTION_URL]/sitemap.xml
