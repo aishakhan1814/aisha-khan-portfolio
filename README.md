@@ -1,7 +1,10 @@
 # Aisha Khan — Developer & Intelligent Systems Portfolio
 
 > Personal portfolio of Aisha Khan — Software Engineer building intelligent systems, distributed architectures, and applied machine learning.
+> 
+> **Live Website**: [https://aisha-khan-portfolio.vercel.app](https://aisha-khan-portfolio.vercel.app)
 
+[![Live URL](https://img.shields.io/badge/Live_Website-aisha--khan--portfolio.vercel.app-7C9EFF?logo=vercel&logoColor=white)](https://aisha-khan-portfolio.vercel.app)
 [![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-6.1-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)

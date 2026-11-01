@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Sitemap for Aisha Khan's Developer Portfolio
-  Replace https://[CONFIGURE_PRODUCTION_URL]/ with the canonical production domain upon deployment
+  Canonical Domain: https://aisha-khan-portfolio.vercel.app
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://[CONFIGURE_PRODUCTION_URL]/</loc>
+    <loc>https://aisha-khan-portfolio.vercel.app/</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
