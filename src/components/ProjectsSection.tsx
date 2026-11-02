@@ -4,78 +4,83 @@ import {
   Github, 
   Lock, 
   Activity, 
-  ShieldCheck 
+  ShieldCheck,
+  ArrowUpRight
 } from 'lucide-react';
+import { SentriqPipelineVisual } from './project-visuals/SentriqPipelineVisual';
+import { RakshaiWorkflowVisual } from './project-visuals/RakshaiWorkflowVisual';
+import { CyberOntologyVisual } from './project-visuals/CyberOntologyVisual';
 
 export const ProjectsSection: React.FC = () => {
   return (
     <section
       id="selected-works"
-      className="relative w-full bg-[#080B12] text-[#EEEEF2] py-20 md:py-32 px-6 md:px-10 border-t border-white/[0.08]"
+      className="relative w-full bg-[#07090E] text-[#EEEEF2] py-24 md:py-36 px-6 md:px-10 border-t border-white/[0.08]"
       aria-label="Selected Works — Flagship Engineering Projects"
     >
       <div className="max-w-6xl mx-auto w-full">
         
         {/* Section Header */}
-        <div id="projects-header" className="mb-14 md:mb-20">
+        <div id="projects-header" className="mb-16 md:mb-24">
           <div className="flex items-center gap-2 mb-3">
             <span className="font-mono text-xs text-[#7C9EFF] tracking-widest uppercase">
-              01 // Selected Works
+              01 // Flagship Projects
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#EEEEF2]">
-            Featured Systems &amp; Engineering Work
+            Engineering Architectures &amp; Technical Systems
           </h2>
           <p className="mt-4 text-sm sm:text-base text-[#94A3B8] font-light max-w-2xl leading-relaxed">
-            Three production-grade architectures spanning post-quantum cryptography, AI-driven healthcare logistics, and formal knowledge representation.
+            Three distinct systems engineered across post-quantum cryptographic risk analysis, life-critical healthcare coordination, and formal cybersecurity knowledge representation.
           </p>
         </div>
 
-        {/* Project 1: SENTRIQ */}
+        {/* =========================================================================
+            PROJECT 01: SENTRIQ
+            ========================================================================= */}
         <article
           id="project-sentriq"
-          className="mb-16 md:mb-24 p-6 sm:p-8 md:p-10 rounded-2xl border border-white/[0.08] bg-[#0D121F]/40 backdrop-blur-sm relative overflow-hidden"
+          className="mb-20 md:mb-32 p-6 sm:p-8 md:p-10 rounded-2xl border border-white/[0.08] bg-[#0D121F]/40 backdrop-blur-sm relative overflow-hidden"
         >
-          {/* Subtle Top Accent */}
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#7C9EFF]/40 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#7C9EFF]/50 to-transparent" />
 
           {/* Header Bar */}
           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/[0.06]">
             <div className="flex items-center gap-3">
               <span className="font-mono text-xl sm:text-2xl font-bold text-[#7C9EFF]">01</span>
               <span className="font-mono text-xs text-[#64748B] uppercase tracking-wider">
-                Post-Quantum Cryptography &amp; Security Engineering
+                Post-Quantum Cryptography &amp; Discovery
               </span>
             </div>
 
-            <div className="flex items-center gap-2 px-2.5 py-1 rounded-md border border-[#7C9EFF]/20 bg-[#7C9EFF]/[0.05] text-[#A5BDFF] text-[11px] font-mono">
+            <div className="flex items-center gap-2 px-2.5 py-1 rounded-md border border-[#7C9EFF]/30 bg-[#7C9EFF]/[0.06] text-[#A5BDFF] text-[11px] font-mono">
               <Lock className="w-3 h-3 text-[#7C9EFF]" />
-              <span>NIST PQC Aligned</span>
+              <span>NIST PQC Standards Aligned</span>
             </div>
           </div>
 
-          {/* Title & One-Liner */}
-          <div className="mt-6">
-            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#EEEEF2]">
+          {/* Title & Description */}
+          <div className="mt-6 mb-8">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#EEEEF2]">
               SENTRIQ
             </h3>
-            <p className="mt-1 font-mono text-xs text-[#7C9EFF]">
-              Post-Quantum Cryptographic Discovery &amp; Algorithmic Urgency Analysis Platform
+            <p className="mt-1.5 font-mono text-xs sm:text-sm text-[#7C9EFF]">
+              Cryptographic Discovery, CycloneDX CBOM Generation &amp; Quantum Risk Assessment Platform
             </p>
           </div>
 
-          {/* Main Grid: Problem & Contribution vs. Architecture & Metrics */}
-          <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Main Grid: Architecture & Details vs Dedicated Visual */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            {/* Left Column: Problem & Personal Contribution */}
-            <div className="lg:col-span-7 space-y-6">
+            {/* Left: Problem & Contribution */}
+            <div className="lg:col-span-5 space-y-6">
               <div>
                 <h4 className="font-mono text-xs text-[#64748B] uppercase tracking-wider mb-2">
                   The Problem
                 </h4>
-                <p className="text-sm sm:text-base text-[#94A3B8] font-light leading-relaxed">
-                  Legacy public-key algorithms (RSA, ECC) are vulnerable to future quantum attacks via Shor’s algorithm. Most enterprise codebases lack visibility into where asymmetric keys and vulnerable libraries reside, preventing proactive migration planning to post-quantum standards.
+                <p className="text-sm text-[#94A3B8] font-light leading-relaxed">
+                  Legacy public-key algorithms (RSA, ECC) are vulnerable to future quantum attacks via Shor’s algorithm. Most enterprise codebases lack automated visibility into where asymmetric keys and vulnerable libraries reside, preventing proactive migration planning to post-quantum standards.
                 </p>
               </div>
 
@@ -86,68 +91,31 @@ export const ProjectsSection: React.FC = () => {
                 <ul className="text-xs sm:text-sm text-[#EEEEF2] font-light space-y-2">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
-                    <span><strong>Static Scanning Engine:</strong> Implemented AST inspection and pattern-based cryptographic detection parsing repository codebases.</span>
+                    <span><strong>Static Ingestion Engine:</strong> Built AST inspection and regex patterns for static cryptographic discovery across repository source files.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
-                    <span><strong>Mosca-Model Analysis:</strong> Programmed urgency calculations based on threat overlap equation <code className="text-[#A5BDFF] font-mono">X + Y &gt; Z</code> (data shelf life + migration duration vs. quantum horizon).</span>
+                    <span><strong>Mosca-Model Implementation:</strong> Programmed institutional urgency calculations based on threat overlap equation <code className="text-[#A5BDFF] font-mono">X + Y &gt; Z</code>.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
-                    <span><strong>QUANTS Risk Scoring:</strong> Engineered an empirical index (0.0 to 10.0 scale) measuring algorithmic exposure and migration complexity.</span>
+                    <span><strong>QUANTS Risk Scoring:</strong> Engineered an empirical index (0.0 to 10.0 scale) measuring algorithmic exposure.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
-                    <span><strong>CBOM Generation:</strong> Exported validated CycloneDX 1.6 Cryptographic Bill of Materials for compliance auditing.</span>
+                    <span><strong>CBOM Generator:</strong> Validated CycloneDX 1.6 Cryptographic Bill of Materials generation exportable for compliance auditing.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
+                    <span><strong>Empirical Benchmarks:</strong> Evaluated across 10 Repos spanning defense and finance codebases, achieving typical discovery completion in 35–45s (max ~60s).</span>
                   </li>
                 </ul>
               </div>
 
-              {/* Technical Highlights */}
-              <div>
-                <h4 className="font-mono text-xs text-[#64748B] uppercase tracking-wider mb-2">
-                  Key Technical Highlights
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-[#94A3B8]">
-                  <div className="p-3 rounded-lg border border-white/[0.04] bg-[#080B12]/60">
-                    <span className="font-mono text-[#EEEEF2] block mb-1">CycloneDX 1.6 Standard</span>
-                    <span>Generates machine-readable CBOM inventories capturing algorithm, key length, and crypto provider.</span>
-                  </div>
-                  <div className="p-3 rounded-lg border border-white/[0.04] bg-[#080B12]/60">
-                    <span className="font-mono text-[#EEEEF2] block mb-1">NIST Migration Targets</span>
-                    <span>Maps vulnerable primitives to approved FIPS standards: ML-KEM, ML-DSA, and SLH-DSA.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Verified Metrics & Stack */}
-            <div className="lg:col-span-5 space-y-5">
-              <div className="p-5 rounded-xl border border-white/[0.06] bg-[#080B12]/80">
-                <span className="font-mono text-xs text-[#A5BDFF] uppercase tracking-wider block mb-3">
-                  Verified Empirical Evidence
-                </span>
-                
-                <div className="grid grid-cols-2 gap-3 text-center">
-                  <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
-                    <div className="font-mono text-xl sm:text-2xl font-bold text-[#EEEEF2]">10 Repos</div>
-                    <div className="font-mono text-[10px] text-[#64748B] mt-1">TESTED CODEBASES</div>
-                  </div>
-                  <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
-                    <div className="font-mono text-xl sm:text-2xl font-bold text-[#7C9EFF]">35–45s</div>
-                    <div className="font-mono text-[10px] text-[#64748B] mt-1">TYPICAL SCAN TIME</div>
-                  </div>
-                </div>
-
-                <div className="mt-3 text-xs text-[#64748B] font-light leading-relaxed">
-                  Evaluated across core OpenSSL implementations, healthcare, defense, and finance codebases. Max observed execution: ~60s. Non-standard ciphers cleanly isolated for manual review.
-                </div>
-              </div>
-
-              {/* Technology Stack */}
+              {/* Technologies */}
               <div>
                 <span className="font-mono text-[11px] text-[#64748B] uppercase tracking-wider block mb-2">
-                  Technologies
+                  Technology Stack
                 </span>
                 <div className="flex flex-wrap gap-1.5">
                   {['Python', 'FastAPI', 'React', 'PostgreSQL', 'Docker', 'CycloneDX 1.6', 'AST Parsing', 'CI/CD'].map((t) => (
@@ -157,21 +125,29 @@ export const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
+            </div>
 
+            {/* Right: Dedicated Interactive Pipeline Visual */}
+            <div className="lg:col-span-7">
+              <SentriqPipelineVisual />
             </div>
 
           </div>
         </article>
 
-        {/* Project 2: RakshAI */}
+        {/* =========================================================================
+            PROJECT 02: RAKSHAI
+            ========================================================================= */}
         <article
           id="project-rakshai"
-          className="mb-16 md:mb-24 p-6 sm:p-8 md:p-10 rounded-2xl border border-white/[0.08] bg-[#0D121F]/40 backdrop-blur-sm relative overflow-hidden"
+          className="mb-20 md:mb-32 p-6 sm:p-8 md:p-10 rounded-2xl border border-white/[0.08] bg-[#0D121F]/40 backdrop-blur-sm relative overflow-hidden"
         >
+          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#34D399]/50 to-transparent" />
+
           {/* Header Bar */}
           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/[0.06]">
             <div className="flex items-center gap-3">
-              <span className="font-mono text-xl sm:text-2xl font-bold text-[#7C9EFF]">02</span>
+              <span className="font-mono text-xl sm:text-2xl font-bold text-[#34D399]">02</span>
               <span className="font-mono text-xs text-[#64748B] uppercase tracking-wider">
                 AI / Machine Learning &amp; Cloud Systems
               </span>
@@ -186,36 +162,37 @@ export const ProjectsSection: React.FC = () => {
                 aria-label="RakshAI GitHub Repository"
               >
                 <Github className="w-3.5 h-3.5" />
-                <span>GitHub</span>
+                <span>GitHub Codebase</span>
+                <ArrowUpRight className="w-3 h-3 text-[#64748B]" />
               </a>
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-emerald-500/20 bg-emerald-500/[0.05] text-emerald-400 text-[11px] font-mono">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-emerald-500/30 bg-emerald-500/[0.06] text-emerald-400 text-[11px] font-mono">
                 <Activity className="w-3 h-3" />
-                <span>Emergency Orchestration</span>
+                <span>Emergency Triage Pipeline</span>
               </div>
             </div>
           </div>
 
-          {/* Title & One-Liner */}
-          <div className="mt-6">
-            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#EEEEF2]">
+          {/* Title & Description */}
+          <div className="mt-6 mb-8">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#EEEEF2]">
               RakshAI
             </h3>
-            <p className="mt-1 font-mono text-xs text-[#7C9EFF]">
-              AI-Powered Blood Intelligence &amp; Life-Critical Care Coordination Pipeline
+            <p className="mt-1.5 font-mono text-xs sm:text-sm text-[#34D399]">
+              AI-Powered Blood Intelligence &amp; Care Coordination Pipeline
             </p>
           </div>
 
           {/* Main Grid */}
-          <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            {/* Left Column: Problem & Contribution */}
-            <div className="lg:col-span-7 space-y-6">
+            {/* Left: Problem & Contribution */}
+            <div className="lg:col-span-5 space-y-6">
               <div>
                 <h4 className="font-mono text-xs text-[#64748B] uppercase tracking-wider mb-2">
                   The Problem
                 </h4>
-                <p className="text-sm sm:text-base text-[#94A3B8] font-light leading-relaxed">
-                  Blood delivery coordination during acute trauma and maternal hemorrhages suffers from fragmented institutional inventory visibility and manual dispatch calls, resulting in critical multi-hour response gaps in time-sensitive medical care.
+                <p className="text-sm text-[#94A3B8] font-light leading-relaxed">
+                  Blood delivery coordination during acute trauma and maternal hemorrhages suffers from fragmented institutional visibility and manual dispatch calls, resulting in critical multi-hour response gaps in time-sensitive medical care.
                 </p>
               </div>
 
@@ -225,67 +202,32 @@ export const ProjectsSection: React.FC = () => {
                 </h4>
                 <ul className="text-xs sm:text-sm text-[#EEEEF2] font-light space-y-2">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#34D399] shrink-0 mt-0.5" />
                     <span><strong>Semantic RAG Pipeline:</strong> Built a vector search triage engine using Pinecone embeddings to semantically match clinical demand with compatible donor availability.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#34D399] shrink-0 mt-0.5" />
                     <span><strong>PCA Feature Engineering:</strong> Performed missing-value imputation and dimensionality reduction over multi-parameter medical records.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#34D399] shrink-0 mt-0.5" />
                     <span><strong>Cloud Orchestration:</strong> Co-architected state transitions using AWS Step Functions, AWS Bedrock generative reasoning, and automated SNS multi-channel alerts.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#34D399] shrink-0 mt-0.5" />
                     <span><strong>Backend Architecture:</strong> Engineered inventory data cleaning, MongoDB schemas, and reliable webhook ingestion within a two-person team.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#34D399] shrink-0 mt-0.5" />
+                    <span><strong>Empirical Pipeline Impact:</strong> Processed BloodWarriors (~7k rows) records, accelerating volunteer dispatch turnaround from ~24h → under 4h.</span>
                   </li>
                 </ul>
               </div>
 
-              {/* Technical Architecture Highlights */}
-              <div>
-                <h4 className="font-mono text-xs text-[#64748B] uppercase tracking-wider mb-2">
-                  Technical Architecture
-                </h4>
-                <div className="p-3.5 rounded-lg border border-white/[0.04] bg-[#080B12]/60 font-mono text-xs text-[#94A3B8] space-y-1">
-                  <div className="text-[#A5BDFF]">Data &amp; Workflow Topology:</div>
-                  <div>MongoDB Ingestion → PCA Feature Processing → Pinecone Vector Index → AWS Bedrock Medical Reasoning → AWS Step Functions → AWS SNS Alert Dispatch.</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Outcomes & Tech */}
-            <div className="lg:col-span-5 space-y-5">
-              <div className="p-5 rounded-xl border border-white/[0.06] bg-[#080B12]/80">
-                <span className="font-mono text-xs text-[#A5BDFF] uppercase tracking-wider block mb-3">
-                  Verified Dataset Outcomes
-                </span>
-
-                <div className="space-y-3 font-mono text-xs">
-                  <div className="flex items-baseline justify-between py-2 border-b border-white/[0.06]">
-                    <span className="text-[#64748B]">VALIDATION DATASET</span>
-                    <span className="text-white font-semibold">BloodWarriors (~7k rows)</span>
-                  </div>
-                  <div className="flex items-baseline justify-between py-2 border-b border-white/[0.06]">
-                    <span className="text-[#64748B]">REPORTED TURNAROUND</span>
-                    <span className="text-[#7C9EFF] font-bold">~24h → under 4h</span>
-                  </div>
-                  <div className="flex items-baseline justify-between py-2">
-                    <span className="text-[#64748B]">ALGORITHMIC CHECKS</span>
-                    <span className="text-[#A5BDFF] font-semibold">3–4 verification suites</span>
-                  </div>
-                </div>
-
-                <div className="mt-3 text-xs text-[#64748B] font-light leading-relaxed">
-                  Evaluated on real-world historical logistics datasets. Validated request-to-dispatch pipelines under simulated emergency surges.
-                </div>
-              </div>
-
-              {/* Stack */}
+              {/* Technologies */}
               <div>
                 <span className="font-mono text-[11px] text-[#64748B] uppercase tracking-wider block mb-2">
-                  Technologies
+                  Technology Stack
                 </span>
                 <div className="flex flex-wrap gap-1.5">
                   {['Python', 'AWS Bedrock', 'AWS SageMaker', 'AWS Step Functions', 'AWS SNS', 'Pinecone', 'MongoDB', 'PCA', 'RAG'].map((t) => (
@@ -295,52 +237,60 @@ export const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
+            </div>
 
+            {/* Right: Dedicated Interactive Workflow & Turnaround Visual */}
+            <div className="lg:col-span-7">
+              <RakshaiWorkflowVisual />
             </div>
 
           </div>
         </article>
 
-        {/* Project 3: Cybersecurity Breach Ontology */}
+        {/* =========================================================================
+            PROJECT 03: CYBERSECURITY BREACH ONTOLOGY
+            ========================================================================= */}
         <article
           id="project-ontology"
           className="p-6 sm:p-8 md:p-10 rounded-2xl border border-white/[0.08] bg-[#0D121F]/40 backdrop-blur-sm relative overflow-hidden"
         >
+          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#A78BFA]/50 to-transparent" />
+
           {/* Header Bar */}
           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/[0.06]">
             <div className="flex items-center gap-3">
-              <span className="font-mono text-xl sm:text-2xl font-bold text-[#7C9EFF]">03</span>
+              <span className="font-mono text-xl sm:text-2xl font-bold text-[#A78BFA]">03</span>
               <span className="font-mono text-xs text-[#64748B] uppercase tracking-wider">
                 Ontology Engineering &amp; Knowledge Representation
               </span>
             </div>
 
-            <div className="flex items-center gap-2 px-2.5 py-1 rounded-md border border-[#7C9EFF]/20 bg-[#7C9EFF]/[0.05] text-[#A5BDFF] text-[11px] font-mono">
-              <ShieldCheck className="w-3 h-3 text-[#7C9EFF]" />
+            <div className="flex items-center gap-2 px-2.5 py-1 rounded-md border border-[#A78BFA]/30 bg-[#A78BFA]/[0.06] text-[#A78BFA] text-[11px] font-mono">
+              <ShieldCheck className="w-3 h-3 text-[#A78BFA]" />
               <span>Microsoft Hackathon Finalist (Top 10)</span>
             </div>
           </div>
 
-          {/* Title & One-Liner */}
-          <div className="mt-6">
-            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#EEEEF2]">
+          {/* Title & Description */}
+          <div className="mt-6 mb-8">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#EEEEF2]">
               Cybersecurity Breach Ontology
             </h3>
-            <p className="mt-1 font-mono text-xs text-[#7C9EFF]">
+            <p className="mt-1.5 font-mono text-xs sm:text-sm text-[#A78BFA]">
               Semantic Knowledge Representation for Attack Path Tracing &amp; Explainable Remediation
             </p>
           </div>
 
           {/* Main Grid */}
-          <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            {/* Left Column: Problem & Contribution */}
-            <div className="lg:col-span-7 space-y-6">
+            {/* Left: Problem & Contribution */}
+            <div className="lg:col-span-5 space-y-6">
               <div>
                 <h4 className="font-mono text-xs text-[#64748B] uppercase tracking-wider mb-2">
                   The Problem
                 </h4>
-                <p className="text-sm sm:text-base text-[#94A3B8] font-light leading-relaxed">
+                <p className="text-sm text-[#94A3B8] font-light leading-relaxed">
                   Security Operations Centers (SOCs) are overwhelmed with alert telemetry lacking semantic causality. Without transparent knowledge models connecting adversary techniques to specific host artifacts and privilege levels, automated remediation cannot explain its reasoning.
                 </p>
               </div>
@@ -351,66 +301,28 @@ export const ProjectsSection: React.FC = () => {
                 </h4>
                 <ul className="text-xs sm:text-sm text-[#EEEEF2] font-light space-y-2">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#A78BFA] shrink-0 mt-0.5" />
                     <span><strong>Knowledge Schema Design:</strong> Substantially contributed to modeling 13 formal entity types, 15 directed relationships, and 38 domain properties in OWL / RDF.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#A78BFA] shrink-0 mt-0.5" />
                     <span><strong>MITRE ATT&amp;CK Mapping:</strong> Co-authored two complete end-to-end incident scenarios modeling initial access, lateral privilege escalation, and exfiltration.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#A78BFA] shrink-0 mt-0.5" />
                     <span><strong>SPARQL Semantic Reasoning:</strong> Formulated reasoning queries enabling automated attack-path root cause deduction and containment verification.</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#7C9EFF] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#A78BFA] shrink-0 mt-0.5" />
                     <span><strong>Hackathon Engineering:</strong> Developed and presented the solution within a two-person engineering team, securing Top 10 placement at the Microsoft Ontology Hackathon.</span>
                   </li>
                 </ul>
               </div>
 
-              {/* Technical Highlights */}
-              <div>
-                <h4 className="font-mono text-xs text-[#64748B] uppercase tracking-wider mb-2">
-                  Knowledge Model Scope
-                </h4>
-                <div className="p-3.5 rounded-lg border border-white/[0.04] bg-[#080B12]/60 font-mono text-xs text-[#94A3B8]">
-                  <span>Entities include ThreatActor, Vulnerability (CVE), Credential, HostArtifact, SecurityMitigation. Axioms verified with Protégé reasoners for logical consistency.</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Verified Metrics & Stack */}
-            <div className="lg:col-span-5 space-y-5">
-              <div className="p-5 rounded-xl border border-white/[0.06] bg-[#080B12]/80">
-                <span className="font-mono text-xs text-[#A5BDFF] uppercase tracking-wider block mb-3">
-                  Verified Modeling Specifications
-                </span>
-
-                <div className="grid grid-cols-3 gap-2 text-center py-2">
-                  <div className="p-2.5 rounded-lg bg-white/[0.02] border border-white/5">
-                    <div className="font-mono text-xl font-bold text-white">13</div>
-                    <div className="font-mono text-[9px] text-[#64748B] mt-0.5">ENTITIES</div>
-                  </div>
-                  <div className="p-2.5 rounded-lg bg-white/[0.02] border border-white/5">
-                    <div className="font-mono text-xl font-bold text-[#7C9EFF]">15</div>
-                    <div className="font-mono text-[9px] text-[#64748B] mt-0.5">RELATIONS</div>
-                  </div>
-                  <div className="p-2.5 rounded-lg bg-white/[0.02] border border-white/5">
-                    <div className="font-mono text-xl font-bold text-[#A5BDFF]">38</div>
-                    <div className="font-mono text-[9px] text-[#64748B] mt-0.5">PROPERTIES</div>
-                  </div>
-                </div>
-
-                <div className="mt-3 text-xs text-[#64748B] font-light leading-relaxed">
-                  Competed at the Microsoft Ontology Hackathon (September 2026), placing Top 10 out of 300+ national teams. Validated through two synthetic attack path traces.
-                </div>
-              </div>
-
-              {/* Stack */}
+              {/* Technologies */}
               <div>
                 <span className="font-mono text-[11px] text-[#64748B] uppercase tracking-wider block mb-2">
-                  Technologies
+                  Technology Stack
                 </span>
                 <div className="flex flex-wrap gap-1.5">
                   {['OWL / RDF', 'Protégé', 'SPARQL', 'Knowledge Graphs', 'Python', 'MITRE ATT&CK', 'Semantic Web'].map((t) => (
@@ -420,7 +332,11 @@ export const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
+            </div>
 
+            {/* Right: Dedicated Interactive Semantic Graph Visual */}
+            <div className="lg:col-span-7">
+              <CyberOntologyVisual />
             </div>
 
           </div>
