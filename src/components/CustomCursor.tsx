@@ -50,14 +50,14 @@ export const CustomCursor: React.FC = () => {
       if (target) {
         gsap.to(follower, {
           scale: 1.4,
-          borderColor: 'rgba(124, 158, 255, 0.7)',
-          backgroundColor: 'rgba(124, 158, 255, 0.08)',
+          borderColor: 'rgba(59, 130, 246, 0.7)',
+          backgroundColor: 'rgba(59, 130, 246, 0.08)',
           duration: 0.2,
         });
       } else {
         gsap.to(follower, {
           scale: 1,
-          borderColor: 'rgba(124, 158, 255, 0.3)',
+          borderColor: 'rgba(59, 130, 246, 0.3)',
           backgroundColor: 'transparent',
           duration: 0.2,
         });
@@ -83,7 +83,7 @@ export const CustomCursor: React.FC = () => {
     <div
       ref={followerRef}
       aria-hidden="true"
-      className="fixed top-0 left-0 w-8 h-8 rounded-full border border-[#7C9EFF]/30 pointer-events-none z-[100] transition-colors duration-150"
+      className="fixed top-0 left-0 w-8 h-8 rounded-full border border-[#3B82F6]/30 pointer-events-none z-[100] transition-colors duration-150"
     />
   );
 };

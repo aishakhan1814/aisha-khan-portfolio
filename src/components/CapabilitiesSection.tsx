@@ -62,7 +62,7 @@ export const CapabilitiesSection: React.FC = () => {
   return (
     <section
       id="capabilities"
-      className="relative w-full bg-[#080B12] text-[#EEEEF2] py-20 md:py-28 px-6 md:px-10 border-t border-white/[0.08]"
+      className="relative w-full bg-[#06080F] text-[#EEEEF2] py-20 md:py-28 px-6 md:px-10 border-t border-white/[0.08]"
       aria-label="Technical Capabilities"
     >
       {/* Anchor compatibility for previous link hashes */}
@@ -73,12 +73,12 @@ export const CapabilitiesSection: React.FC = () => {
         {/* Header */}
         <div id="capabilities-header" className="mb-12 md:mb-16">
           <div className="flex items-center gap-2 mb-3">
-            <span className="font-mono text-xs text-[#7C9EFF] tracking-widest uppercase">
+            <span className="font-mono text-xs text-[#3B82F6] tracking-widest uppercase">
               02 // Technical Capabilities
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#EEEEF2]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
             Engineering Toolkit
           </h2>
           <p className="mt-4 text-sm sm:text-base text-[#94A3B8] font-light max-w-2xl leading-relaxed">
@@ -93,12 +93,12 @@ export const CapabilitiesSection: React.FC = () => {
             return (
               <div
                 key={group.title}
-                className="p-6 rounded-xl border border-white/[0.08] bg-[#0D121F]/40 backdrop-blur-sm flex flex-col justify-between"
+                className="p-6 rounded-xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-white/[0.06]">
-                    <Icon className="w-4 h-4 text-[#7C9EFF]" />
-                    <h3 className="font-mono text-xs font-semibold text-[#EEEEF2] uppercase tracking-wider">
+                    <Icon className="w-4 h-4 text-[#3B82F6]" />
+                    <h3 className="font-mono text-xs font-semibold text-white uppercase tracking-wider">
                       {group.title}
                     </h3>
                   </div>
@@ -109,7 +109,7 @@ export const CapabilitiesSection: React.FC = () => {
                         <span className="text-xs sm:text-sm text-white font-medium">
                           {skill.name}
                         </span>
-                        <span className="font-mono text-[10px] text-[#7C9EFF]/80">
+                        <span className="font-mono text-[10px] text-[#93C5FD]">
                           {skill.context}
                         </span>
                       </li>
@@ -124,12 +124,12 @@ export const CapabilitiesSection: React.FC = () => {
         {/* Engineering Philosophy One-Liner */}
         <div className="mt-8 p-4 rounded-xl border border-white/[0.04] bg-white/[0.01] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-[#64748B]">
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#7C9EFF]" />
-            <span>Tools are evaluated by their reliability, auditability, and suitability for high-consequence workloads.</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+            <span className="text-[#94A3B8]">Tools are evaluated by their reliability, auditability, and suitability for high-consequence workloads.</span>
           </div>
           <a
             href="#selected-works"
-            className="text-[#7C9EFF] hover:underline inline-flex items-center gap-1"
+            className="text-[#3B82F6] hover:text-[#60A5FA] hover:underline inline-flex items-center gap-1"
           >
             <span>See applied evidence</span>
             <ArrowUpRight className="w-3 h-3" />

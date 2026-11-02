@@ -74,29 +74,16 @@ export function initHeroAnimations(): HeroAnimationCleanup {
       )
       .fromTo(
         '#hero-visual-wrapper',
-        { opacity: 0, scale: 0.9 },
-        { opacity: 0.7, scale: 1, duration: 1.2, ease: 'power3.out' },
+        { opacity: 0, scale: 0.95 },
+        { opacity: 0.9, scale: 1, duration: 1.2, ease: 'power3.out' },
         '-=0.9'
       )
       .fromTo(
         '#hero-scroll-indicator',
         { opacity: 0 },
-        { opacity: 0.6, duration: 0.6 },
+        { opacity: 0.8, duration: 0.6 },
         '-=0.3'
       );
-
-    // Subtle scroll fade out of hero content
-    gsap.to(['#hero-headline-wrapper', '#hero-description', '#hero-cta'], {
-      scrollTrigger: {
-        trigger: '#hero-section',
-        start: 'top top',
-        end: 'bottom 40%',
-        scrub: 0.6,
-      },
-      y: -40,
-      opacity: 0.2,
-      ease: 'none',
-    });
   });
 
   // Mobile Animation Architecture (max-width: 767px)

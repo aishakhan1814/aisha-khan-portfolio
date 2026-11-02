@@ -50,11 +50,11 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#080B12] text-[#EEEEF2] selection:bg-[#7C9EFF]/30 selection:text-white">
+    <div className="relative min-h-screen bg-[#06080F] text-[#EEEEF2] selection:bg-[#3B82F6]/30 selection:text-white">
       {/* Keyboard Accessibility Skip Link */}
       <a
         href="#selected-works"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[150] focus:px-4 focus:py-2 focus:bg-[#7C9EFF] focus:text-[#080B12] focus:font-bold focus:rounded-md focus:outline-none"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[150] focus:px-4 focus:py-2 focus:bg-[#3B82F6] focus:text-white focus:font-bold focus:rounded-md focus:outline-none"
       >
         Skip to work
       </a>

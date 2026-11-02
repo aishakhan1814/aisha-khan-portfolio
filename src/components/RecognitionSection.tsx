@@ -89,7 +89,7 @@ export const RecognitionSection: React.FC = () => {
   return (
     <section
       id="recognition"
-      className="relative w-full bg-[#080B12] text-[#EEEEF2] py-20 md:py-28 px-6 md:px-10 border-t border-white/[0.08]"
+      className="relative w-full bg-[#06080F] text-[#EEEEF2] py-20 md:py-28 px-6 md:px-10 border-t border-white/[0.08]"
       aria-label="Recognition & Leadership"
     >
       {/* Anchor compatibility alias */}
@@ -100,12 +100,12 @@ export const RecognitionSection: React.FC = () => {
         {/* Header */}
         <div id="recognition-header" className="mb-14 md:mb-16">
           <div className="flex items-center gap-2 mb-3">
-            <span className="font-mono text-xs text-[#7C9EFF] tracking-widest uppercase">
+            <span className="font-mono text-xs text-[#3B82F6] tracking-widest uppercase">
               03 // Recognition &amp; Leadership
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#EEEEF2]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
             Honors &amp; Initiatives
           </h2>
           <p className="mt-4 text-sm sm:text-base text-[#94A3B8] font-light max-w-2xl leading-relaxed">
@@ -116,8 +116,8 @@ export const RecognitionSection: React.FC = () => {
         {/* 1. Competitive Honors & Hackathons */}
         <div className="mb-14">
           <div className="flex items-center gap-2 mb-6">
-            <Trophy className="w-4 h-4 text-[#7C9EFF]" />
-            <h3 className="font-mono text-xs text-[#7C9EFF] uppercase tracking-wider font-semibold">
+            <Trophy className="w-4 h-4 text-[#3B82F6]" />
+            <h3 className="font-mono text-xs text-[#3B82F6] uppercase tracking-wider font-semibold">
               Hackathons &amp; Competitive Recognitions
             </h3>
           </div>
@@ -128,19 +128,19 @@ export const RecognitionSection: React.FC = () => {
                 key={h.title}
                 className={`p-5 rounded-xl border transition-colors ${
                   h.highlight
-                    ? 'border-[#7C9EFF]/30 bg-[#0D121F]/60 md:col-span-2'
-                    : 'border-white/[0.06] bg-[#0D121F]/30'
+                    ? 'border-[#3B82F6]/40 bg-[#0B0F19]/90 md:col-span-2'
+                    : 'border-white/[0.06] bg-[#0B0F19]/40'
                 }`}
               >
                 <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
                   <h4 className="text-base font-bold text-white tracking-tight">
                     {h.title}
                   </h4>
-                  <span className="font-mono text-xs text-[#7C9EFF] font-semibold">
+                  <span className="font-mono text-xs text-[#60A5FA] font-semibold">
                     {h.metric}
                   </span>
                 </div>
-                <div className="font-mono text-xs text-[#A5BDFF] mb-2">{h.role}</div>
+                <div className="font-mono text-xs text-[#93C5FD] mb-2">{h.role}</div>
                 <p className="text-xs sm:text-sm text-[#94A3B8] font-light leading-relaxed">
                   {h.summary}
                 </p>
@@ -155,8 +155,8 @@ export const RecognitionSection: React.FC = () => {
           {/* Leadership & Extracurriculars */}
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <Users className="w-4 h-4 text-[#7C9EFF]" />
-              <h3 className="font-mono text-xs text-[#7C9EFF] uppercase tracking-wider font-semibold">
+              <Users className="w-4 h-4 text-[#3B82F6]" />
+              <h3 className="font-mono text-xs text-[#3B82F6] uppercase tracking-wider font-semibold">
                 Leadership &amp; Community (Compressed)
               </h3>
             </div>
@@ -165,11 +165,11 @@ export const RecognitionSection: React.FC = () => {
               {leadership.map((item) => (
                 <div
                   key={item.org}
-                  className="p-4 rounded-xl border border-white/[0.06] bg-[#0D121F]/20"
+                  className="p-4 rounded-xl border border-white/[0.06] bg-[#0B0F19]/40"
                 >
                   <div className="flex items-baseline justify-between gap-2 mb-1">
                     <span className="text-xs font-bold text-white">{item.org}</span>
-                    <span className="font-mono text-[11px] text-[#A5BDFF]">{item.role}</span>
+                    <span className="font-mono text-[11px] text-[#93C5FD]">{item.role}</span>
                   </div>
                   <p className="text-xs text-[#94A3B8] font-light">
                     {item.detail}
@@ -182,8 +182,8 @@ export const RecognitionSection: React.FC = () => {
           {/* Scholarships & Certifications */}
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <Award className="w-4 h-4 text-[#7C9EFF]" />
-              <h3 className="font-mono text-xs text-[#7C9EFF] uppercase tracking-wider font-semibold">
+              <Award className="w-4 h-4 text-[#3B82F6]" />
+              <h3 className="font-mono text-xs text-[#3B82F6] uppercase tracking-wider font-semibold">
                 Scholarships &amp; Certifications
               </h3>
             </div>
@@ -192,7 +192,7 @@ export const RecognitionSection: React.FC = () => {
               {scholarshipsAndHonors.map((item) => (
                 <div
                   key={item.title}
-                  className="p-4 rounded-xl border border-white/[0.06] bg-[#0D121F]/20"
+                  className="p-4 rounded-xl border border-white/[0.06] bg-[#0B0F19]/40"
                 >
                   <div className="text-xs font-bold text-white mb-1">{item.title}</div>
                   <p className="text-xs text-[#94A3B8] font-light">

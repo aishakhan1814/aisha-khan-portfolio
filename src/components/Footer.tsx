@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
   return (
     <footer
       id="site-footer"
-      className="relative z-20 py-12 md:py-16 bg-[#080B12] text-[#EEEEF2] border-t border-white/[0.08]"
+      className="relative z-20 py-12 md:py-16 bg-[#06080F] text-[#EEEEF2] border-t border-white/[0.08]"
     >
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-white/[0.06]">
@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
           {/* Identity */}
           <div className="max-w-sm">
             <div className="flex items-center gap-2 mb-1.5">
-              <span className="font-mono font-bold text-base text-[#7C9EFF]">AK</span>
+              <span className="font-mono font-bold text-base text-[#3B82F6]">AK</span>
               <span className="text-xs font-mono text-[#64748B] pl-2 border-l border-white/10 uppercase tracking-wider">
                 Aisha Khan
               </span>
@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[#94A3B8] hover:text-[#EEEEF2] transition-colors"
+                className="text-[#94A3B8] hover:text-white transition-colors"
               >
                 {link.name}
               </a>
@@ -52,7 +52,7 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-3">
             <a
               href="mailto:alfalima920@gmail.com"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-white/10 bg-white/[0.02] text-xs font-mono text-[#A5BDFF] hover:border-[#7C9EFF]/40 hover:text-white transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-white/10 bg-white/[0.02] text-xs font-mono text-[#93C5FD] hover:border-[#3B82F6]/50 hover:text-white transition-all"
               aria-label="Direct Email Link"
             >
               <Mail className="w-3.5 h-3.5" />
@@ -80,11 +80,11 @@ export const Footer: React.FC = () => {
           <button
             type="button"
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 text-[#94A3B8] hover:text-[#EEEEF2] transition-colors"
+            className="inline-flex items-center gap-1.5 text-[#94A3B8] hover:text-white transition-colors"
             aria-label="Scroll to top"
           >
             <span>Back to top</span>
-            <ArrowUp className="w-3 h-3 text-[#7C9EFF]" />
+            <ArrowUp className="w-3 h-3 text-[#3B82F6]" />
           </button>
         </div>
       </div>
