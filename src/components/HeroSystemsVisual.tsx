@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { ShieldCheck, Activity, Cpu, Sparkles } from 'lucide-react';
 
 interface HeroSystemsVisualProps {
   className?: string;
@@ -11,6 +12,10 @@ export const HeroSystemsVisual: React.FC<HeroSystemsVisualProps> = ({ className 
     const container = containerRef.current;
     if (!container) return;
 
+    // Respect reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
     let mouseX = 0;
     let mouseY = 0;
     let currentX = 0;
@@ -21,19 +26,20 @@ export const HeroSystemsVisual: React.FC<HeroSystemsVisualProps> = ({ className 
       const rect = container.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
-      mouseX = x * 18; // Degrees of 3D tilt
-      mouseY = y * -18;
+      mouseX = x * 12; // Degrees of subtle 3D tilt
+      mouseY = y * -12;
     };
 
-    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    const targetEl = container;
+    targetEl.addEventListener('mousemove', onMouseMove, { passive: true });
 
     const animate = () => {
-      currentX += (mouseX - currentX) * 0.06;
-      currentY += (mouseY - currentY) * 0.06;
+      currentX += (mouseX - currentX) * 0.08;
+      currentY += (mouseY - currentY) * 0.08;
 
       const visualGroup = container.querySelector('#hero-visual-3d-scene') as HTMLElement | null;
       if (visualGroup) {
-        visualGroup.style.transform = `perspective(1100px) rotateY(${currentX}deg) rotateX(${currentY}deg)`;
+        visualGroup.style.transform = `perspective(1000px) rotateY(${currentX}deg) rotateX(${currentY}deg)`;
       }
 
       animationFrameId = requestAnimationFrame(animate);
@@ -42,7 +48,7 @@ export const HeroSystemsVisual: React.FC<HeroSystemsVisualProps> = ({ className 
     animate();
 
     return () => {
-      window.removeEventListener('mousemove', onMouseMove);
+      targetEl.removeEventListener('mousemove', onMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -51,53 +57,72 @@ export const HeroSystemsVisual: React.FC<HeroSystemsVisualProps> = ({ className 
     <div
       ref={containerRef}
       id="hero-systems-visual"
-      className={`relative w-[340px] h-[340px] sm:w-[480px] sm:h-[480px] md:w-[560px] md:h-[560px] lg:w-[640px] lg:h-[640px] pointer-events-none select-none ${className}`}
-      aria-hidden="true"
+      className={`spotlight-card relative w-full max-w-[640px] rounded-2xl border border-white/20 bg-[#070D1E]/95 shadow-[0_0_60px_rgba(37,99,235,0.22)] p-4 sm:p-6 backdrop-blur-xl select-none ${className}`}
+      aria-label="Intelligent Systems Network Architecture"
     >
-      {/* Deep Cobalt Ambient Radial Underglow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-gradient-to-tr from-[#1D4ED8]/15 via-[#3B82F6]/10 to-transparent blur-[90px]" />
+      {/* Ambient Radial Underglow — Electric Cyan & Cobalt */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] rounded-full bg-gradient-to-tr from-[#1D4ED8]/25 via-[#06B6D4]/20 to-transparent blur-[80px] pointer-events-none" />
 
-      {/* 3D Perspective Group */}
+      {/* Top Telemetry Header Bar */}
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 pb-3.5 border-b border-white/[0.1] mb-3 sm:mb-4">
+        <div className="flex items-center gap-2.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#06B6D4] shadow-[0_0_12px_#06B6D4] animate-pulse" />
+          <span className="font-mono text-xs sm:text-sm font-bold text-white uppercase tracking-wider">
+            Intelligent Systems Network
+          </span>
+          <span className="text-[#64748B] hidden sm:inline">|</span>
+          <span className="font-mono text-[11px] text-[#38BDF8] tracking-widest hidden sm:inline uppercase">
+            Tri-Branch Architecture
+          </span>
+        </div>
+
+        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-[#3B82F6]/40 bg-[#3B82F6]/15 text-[#93C5FD] text-[11px] font-mono font-medium">
+          <Sparkles className="w-3.5 h-3.5 text-[#38BDF8]" />
+          <span>Deterministic Core</span>
+        </div>
+      </div>
+
+      {/* 3D Perspective Visual Canvas */}
       <div
         id="hero-visual-3d-scene"
-        className="w-full h-full transition-transform ease-out duration-75 transform-gpu"
+        className="relative z-10 w-full transition-transform ease-out duration-100 transform-gpu"
         style={{ transformStyle: 'preserve-3d' }}
       >
         <svg
-          viewBox="0 0 640 640"
+          viewBox="0 0 660 520"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full"
+          className="w-full h-auto drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
         >
           <defs>
-            {/* Blue & White Linear Conduits */}
-            <linearGradient id="blueConduit1" x1="140" y1="190" x2="320" y2="320" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#60A5FA" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#2563EB" stopOpacity="0.3" />
+            {/* Branch Highway Linear Gradients */}
+            <linearGradient id="branchCryptoGrad" x1="160" y1="110" x2="330" y2="260" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#3B82F6" stopOpacity="1" />
+              <stop offset="100%" stopColor="#2563EB" stopOpacity="0.6" />
             </linearGradient>
 
-            <linearGradient id="blueConduit2" x1="500" y1="210" x2="320" y2="320" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#1D4ED8" stopOpacity="0.3" />
+            <linearGradient id="branchCareGrad" x1="500" y1="110" x2="330" y2="260" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#06B6D4" stopOpacity="1" />
+              <stop offset="100%" stopColor="#0284C7" stopOpacity="0.6" />
             </linearGradient>
 
-            <linearGradient id="blueConduit3" x1="320" y1="510" x2="320" y2="320" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#93C5FD" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.3" />
+            <linearGradient id="branchSecGrad" x1="330" y1="410" x2="330" y2="260" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#60A5FA" stopOpacity="1" />
+              <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.6" />
             </linearGradient>
 
             {/* Glowing Core Filter */}
-            <filter id="coreGlow" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="6" result="blur" />
+            <filter id="heroCoreGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
 
-            {/* Subtle Node Filter */}
-            <filter id="nodeGlow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
+            {/* Node Highlight Filter */}
+            <filter id="heroNodeGlow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
@@ -105,213 +130,200 @@ export const HeroSystemsVisual: React.FC<HeroSystemsVisualProps> = ({ className 
             </filter>
           </defs>
 
-          {/* =========================================================================
-              RADAR & TELEMETRY RETICLE GAUGES
-              ========================================================================= */}
-          {/* Outer Boundary Reticle */}
-          <circle cx="320" cy="320" r="280" stroke="#3B82F6" strokeWidth="1" strokeOpacity="0.12" />
-          <circle cx="320" cy="320" r="280" stroke="#FFFFFF" strokeWidth="1" strokeDasharray="3 15" strokeOpacity="0.18" />
+          {/* Deep Navy Canvas Card Backing */}
+          <rect width="660" height="520" fill="#050A18" rx="14" />
 
-          {/* Degree Calibration Ticks */}
-          {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => {
-            const rad = (deg * Math.PI) / 180;
-            const x1 = 320 + Math.cos(rad) * 272;
-            const y1 = 320 + Math.sin(rad) * 272;
-            const x2 = 320 + Math.cos(rad) * 280;
-            const y2 = 320 + Math.sin(rad) * 280;
-            return (
-              <g key={deg}>
-                <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#3B82F6" strokeWidth="1.5" strokeOpacity="0.4" />
-              </g>
-            );
-          })}
-
-          {/* Secondary Concentric Range Rings */}
-          <circle cx="320" cy="320" r="210" stroke="#3B82F6" strokeWidth="1" strokeDasharray="6 8" strokeOpacity="0.15" />
-          <circle cx="320" cy="320" r="140" stroke="#60A5FA" strokeWidth="1" strokeOpacity="0.18" />
-          <circle cx="320" cy="320" r="70" stroke="#3B82F6" strokeWidth="1" strokeDasharray="2 4" strokeOpacity="0.25" />
-
-          {/* Precision Alignment Crosshairs */}
-          <line x1="320" y1="35" x2="320" y2="605" stroke="#3B82F6" strokeWidth="1" strokeDasharray="4 8" strokeOpacity="0.1" />
-          <line x1="35" y1="320" x2="605" y2="320" stroke="#3B82F6" strokeWidth="1" strokeDasharray="4 8" strokeOpacity="0.1" />
-
-          {/* Corner Coordinate HUD Readouts */}
-          <text x="50" y="60" fill="#94A3B8" fontFamily="monospace" fontSize="9" letterSpacing="1">
-            SYS.NEXUS // VERIFIED ARCHITECTURE
-          </text>
-          <text x="50" y="74" fill="#3B82F6" fontFamily="monospace" fontSize="8" letterSpacing="1">
-            LAT 17.3850° N // LON 78.4867° E
-          </text>
-          <text x="590" y="60" textAnchor="end" fill="#94A3B8" fontFamily="monospace" fontSize="9" letterSpacing="1">
-            TOPOLOGY // 3-TIER OPERATIONAL
-          </text>
-          <text x="590" y="74" textAnchor="end" fill="#60A5FA" fontFamily="monospace" fontSize="8" letterSpacing="1">
-            STATUS: ACTIVE // METRICS NOMINAL
-          </text>
+          {/* Clean Orbital Guidance Ring */}
+          <circle cx="330" cy="260" r="160" stroke="#3B82F6" strokeWidth="1" strokeDasharray="3 6" strokeOpacity="0.25" />
+          <circle cx="330" cy="260" r="85" stroke="#06B6D4" strokeWidth="1" strokeDasharray="4 4" strokeOpacity="0.3" />
 
           {/* =========================================================================
-              INTERCONNECTING VECTOR LATTICE & HIGHWAY CONDUITS
+              MAIN RADIAL DATA HIGHWAYS (CONNECTING CORE TO 3 PROJECT BRANCHES)
               ========================================================================= */}
-          {/* Peripheral Triangle Bus */}
-          <polygon
-            points="140,190 500,210 320,510"
-            fill="none"
-            stroke="#3B82F6"
-            strokeWidth="1"
-            strokeDasharray="4 6"
-            strokeOpacity="0.2"
+          {/* Branch 1 Highway (Crypto) */}
+          <line
+            x1="160"
+            y1="110"
+            x2="330"
+            y2="260"
+            stroke="url(#branchCryptoGrad)"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          {/* Branch 2 Highway (Care) */}
+          <line
+            x1="500"
+            y1="110"
+            x2="330"
+            y2="260"
+            stroke="url(#branchCareGrad)"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          {/* Branch 3 Highway (Security) */}
+          <line
+            x1="330"
+            y1="410"
+            x2="330"
+            y2="260"
+            stroke="url(#branchSecGrad)"
+            strokeWidth="3"
+            strokeLinecap="round"
           />
 
-          {/* Primary Radial Data Conduits to Center */}
-          <line x1="140" y1="190" x2="320" y2="320" stroke="url(#blueConduit1)" strokeWidth="2" />
-          <line x1="500" y1="210" x2="320" y2="320" stroke="url(#blueConduit2)" strokeWidth="2" />
-          <line x1="320" y1="510" x2="320" y2="320" stroke="url(#blueConduit3)" strokeWidth="2" />
+          {/* Inter-Branch Perimeter Mesh */}
+          <polygon
+            points="160,110 500,110 330,410"
+            fill="none"
+            stroke="#3B82F6"
+            strokeWidth="1.2"
+            strokeDasharray="4 6"
+            strokeOpacity="0.22"
+          />
 
-          {/* Secondary Telemetry Arcs */}
-          <path d="M 140 190 Q 320 220 500 210" stroke="#60A5FA" strokeWidth="1" strokeOpacity="0.18" fill="none" />
-          <path d="M 500 210 Q 420 380 320 510" stroke="#60A5FA" strokeWidth="1" strokeOpacity="0.18" fill="none" />
-          <path d="M 320 510 Q 220 370 140 190" stroke="#60A5FA" strokeWidth="1" strokeOpacity="0.18" fill="none" />
+          {/* =========================================================================
+              ANIMATED DATA PHOTONS (PULSES TRAVELING IN CONCURRENT REAL-TIME)
+              ========================================================================= */}
+          {/* Photon: Branch 1 <-> Core */}
+          <circle r="4.5" fill="#FFFFFF" filter="url(#heroNodeGlow)">
+            <animateMotion path="M 160 110 L 330 260" dur="2.4s" repeatCount="indefinite" />
+          </circle>
+          <circle r="3.5" fill="#60A5FA" filter="url(#heroNodeGlow)">
+            <animateMotion path="M 330 260 L 160 110" dur="3.0s" repeatCount="indefinite" />
+          </circle>
 
-          {/* Ambient Micro Data Satellite Nodes */}
-          {[
-            { cx: 210, cy: 150 },
-            { cx: 430, cy: 160 },
-            { cx: 530, cy: 330 },
-            { cx: 400, cy: 450 },
-            { cx: 230, cy: 440 },
-            { cx: 120, cy: 330 },
-          ].map((pt, i) => (
-            <g key={i}>
-              <circle cx={pt.cx} cy={pt.cy} r="3" fill="#06080F" stroke="#3B82F6" strokeWidth="1.2" strokeOpacity="0.5" />
-              <line x1={pt.cx} y1={pt.cy} x2="320" y2="320" stroke="#3B82F6" strokeWidth="0.75" strokeDasharray="3 5" strokeOpacity="0.12" />
+          {/* Photon: Branch 2 <-> Core */}
+          <circle r="4.5" fill="#FFFFFF" filter="url(#heroNodeGlow)">
+            <animateMotion path="M 500 110 L 330 260" dur="2.2s" repeatCount="indefinite" />
+          </circle>
+          <circle r="3.5" fill="#06B6D4" filter="url(#heroNodeGlow)">
+            <animateMotion path="M 330 260 L 500 110" dur="2.8s" repeatCount="indefinite" />
+          </circle>
+
+          {/* Photon: Branch 3 <-> Core */}
+          <circle r="4.5" fill="#FFFFFF" filter="url(#heroNodeGlow)">
+            <animateMotion path="M 330 410 L 330 260" dur="2.5s" repeatCount="indefinite" />
+          </circle>
+          <circle r="3.5" fill="#38BDF8" filter="url(#heroNodeGlow)">
+            <animateMotion path="M 330 260 L 330 410" dur="3.2s" repeatCount="indefinite" />
+          </circle>
+
+          {/* =========================================================================
+              BRANCH 01: CRYPTOGRAPHIC INTELLIGENCE (SENTRIQ)
+              ========================================================================= */}
+          <g id="hero-branch-crypto" transform="translate(160, 110)" className="cursor-pointer">
+            {/* Hub Anchor Box */}
+            <rect x="-110" y="-55" width="220" height="88" rx="12" fill="#0D162E" stroke="#3B82F6" strokeWidth="2.5" />
+            <circle cx="-88" cy="-33" r="5" fill="#3B82F6" />
+            <text x="-76" y="-29" fill="#38BDF8" fontFamily="monospace" fontSize="10.5" fontWeight="bold" letterSpacing="1">
+              BRANCH 01 // SENTRIQ
+            </text>
+            <text x="-110" y="-7" dx="22" fill="#FFFFFF" fontFamily="sans-serif" fontSize="13" fontWeight="bold">
+              Cryptographic Discovery
+            </text>
+            <text x="-110" y="12" dx="22" fill="#93C5FD" fontFamily="monospace" fontSize="9.5">
+              AST Scan · CBOM 1.6 · Mosca (X+Y&gt;Z)
+            </text>
+
+            {/* Badges */}
+            <g transform="translate(-100, 20)">
+              <rect x="0" y="0" width="94" height="20" rx="4" fill="#070D1E" stroke="#3B82F6" strokeWidth="1" />
+              <text x="47" y="14" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="9" fontWeight="bold">Repo Ingestion</text>
             </g>
-          ))}
+            <g transform="translate(6, 20)">
+              <rect x="0" y="0" width="94" height="20" rx="4" fill="#070D1E" stroke="#60A5FA" strokeWidth="1" />
+              <text x="47" y="14" textAnchor="middle" fill="#38BDF8" fontFamily="monospace" fontSize="9" fontWeight="bold">NIST PQC Migration</text>
+            </g>
+          </g>
 
           {/* =========================================================================
-              ANIMATED DATA PHOTONS (PULSES TRAVELING ALONG CONDUITS)
+              BRANCH 02: INTELLIGENT CARE LOGISTICS (RAKSHAI)
               ========================================================================= */}
-          {/* Node 1 to Core */}
-          <circle r="3.5" fill="#FFFFFF" filter="url(#nodeGlow)">
-            <animateMotion path="M 140 190 L 320 320" dur="2.8s" repeatCount="indefinite" />
-          </circle>
-          {/* Core to Node 1 */}
-          <circle r="3" fill="#60A5FA" filter="url(#nodeGlow)">
-            <animateMotion path="M 320 320 L 140 190" dur="3.4s" repeatCount="indefinite" />
-          </circle>
+          <g id="hero-branch-care" transform="translate(500, 110)" className="cursor-pointer">
+            {/* Hub Anchor Box */}
+            <rect x="-110" y="-55" width="220" height="88" rx="12" fill="#081E35" stroke="#06B6D4" strokeWidth="2.5" />
+            <circle cx="-88" cy="-33" r="5" fill="#06B6D4" />
+            <text x="-76" y="-29" fill="#38BDF8" fontFamily="monospace" fontSize="10.5" fontWeight="bold" letterSpacing="1">
+              BRANCH 02 // RAKSHAI
+            </text>
+            <text x="-110" y="-7" dx="22" fill="#FFFFFF" fontFamily="sans-serif" fontSize="13" fontWeight="bold">
+              Intelligent Care Triage
+            </text>
+            <text x="-110" y="12" dx="22" fill="#67E8F9" fontFamily="monospace" fontSize="9.5">
+              ~7k Records · PCA Impute · &lt;4h Speedup
+            </text>
 
-          {/* Node 2 to Core */}
-          <circle r="3.5" fill="#FFFFFF" filter="url(#nodeGlow)">
-            <animateMotion path="M 500 210 L 320 320" dur="2.4s" repeatCount="indefinite" />
-          </circle>
-          {/* Core to Node 2 */}
-          <circle r="3" fill="#3B82F6" filter="url(#nodeGlow)">
-            <animateMotion path="M 320 320 L 500 210" dur="3.1s" repeatCount="indefinite" />
-          </circle>
-
-          {/* Node 3 to Core */}
-          <circle r="3.5" fill="#FFFFFF" filter="url(#nodeGlow)">
-            <animateMotion path="M 320 510 L 320 320" dur="2.6s" repeatCount="indefinite" />
-          </circle>
-          {/* Core to Node 3 */}
-          <circle r="3" fill="#93C5FD" filter="url(#nodeGlow)">
-            <animateMotion path="M 320 320 L 320 510" dur="3.3s" repeatCount="indefinite" />
-          </circle>
-
-          {/* Perimeter Orbital Photons */}
-          <circle r="2.5" fill="#60A5FA" filter="url(#nodeGlow)">
-            <animateMotion path="M 140 190 L 500 210 L 320 510 Z" dur="7s" repeatCount="indefinite" />
-          </circle>
+            {/* Badges */}
+            <g transform="translate(-100, 20)">
+              <rect x="0" y="0" width="94" height="20" rx="4" fill="#070D1E" stroke="#06B6D4" strokeWidth="1" />
+              <text x="47" y="14" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="9" fontWeight="bold">Hospital Telemetry</text>
+            </g>
+            <g transform="translate(6, 20)">
+              <rect x="0" y="0" width="94" height="20" rx="4" fill="#070D1E" stroke="#38BDF8" strokeWidth="1" />
+              <text x="47" y="14" textAnchor="middle" fill="#67E8F9" fontFamily="monospace" fontSize="9" fontWeight="bold">Vector RAG Flow</text>
+            </g>
+          </g>
 
           {/* =========================================================================
-              NODE 01: POST-QUANTUM CRYPTOGRAPHIC DISCOVERY (SENTRIQ)
+              BRANCH 03: SECURITY KNOWLEDGE GRAPH (CYBER ONTOLOGY)
               ========================================================================= */}
-          <g transform="translate(140, 190)" filter="url(#nodeGlow)">
-            {/* Outer Hexagon / Shield Bracket */}
-            <circle cx="0" cy="0" r="28" fill="#06080F" stroke="#3B82F6" strokeWidth="1.5" />
-            <circle cx="0" cy="0" r="24" fill="#0B0F19" stroke="#60A5FA" strokeWidth="1" strokeDasharray="3 3" />
-            <circle cx="0" cy="0" r="7" fill="#3B82F6" />
-            <circle cx="0" cy="0" r="3" fill="#FFFFFF" />
-
-            {/* Labels */}
-            <text x="0" y="-36" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="9" fontWeight="bold" letterSpacing="0.5">
-              01 // SENTRIQ
+          <g id="hero-branch-security" transform="translate(330, 420)" className="cursor-pointer">
+            {/* Hub Anchor Box */}
+            <rect x="-135" y="-45" width="270" height="84" rx="12" fill="#0D162E" stroke="#60A5FA" strokeWidth="2.5" />
+            <circle cx="-110" cy="-24" r="5" fill="#60A5FA" />
+            <text x="-98" y="-20" fill="#93C5FD" fontFamily="monospace" fontSize="10.5" fontWeight="bold" letterSpacing="1">
+              BRANCH 03 // CYBER ONTOLOGY
             </text>
-            <text x="0" y="-48" textAnchor="middle" fill="#60A5FA" fontFamily="monospace" fontSize="8" letterSpacing="1">
-              POST-QUANTUM CRYPTO
+            <text x="-135" y="2" dx="25" fill="#FFFFFF" fontFamily="sans-serif" fontSize="13" fontWeight="bold">
+              Attack Path Reasoning &amp; Remediation
             </text>
-            <text x="0" y="42" textAnchor="middle" fill="#94A3B8" fontFamily="monospace" fontSize="8">
-              CBOM 1.6 · NIST PQC
+            <text x="-135" y="22" dx="25" fill="#CBD5E1" fontFamily="monospace" fontSize="9.5">
+              13 Entity Types · 15 Relationships · 38 Properties (Top 10)
             </text>
           </g>
 
           {/* =========================================================================
-              NODE 02: AI BLOOD LOGISTICS & TRIAGE (RAKSHAI)
+              CENTRAL ARCHITECTURE CORE (INTELLIGENCE FOCAL POINT)
               ========================================================================= */}
-          <g transform="translate(500, 210)" filter="url(#nodeGlow)">
-            {/* Outer Hexagon / Shield Bracket */}
-            <circle cx="0" cy="0" r="28" fill="#06080F" stroke="#3B82F6" strokeWidth="1.5" />
-            <circle cx="0" cy="0" r="24" fill="#0B0F19" stroke="#60A5FA" strokeWidth="1" strokeDasharray="3 3" />
-            <circle cx="0" cy="0" r="7" fill="#3B82F6" />
-            <circle cx="0" cy="0" r="3" fill="#FFFFFF" />
-
-            {/* Labels */}
-            <text x="0" y="-36" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="9" fontWeight="bold" letterSpacing="0.5">
-              02 // RAKSHAI
-            </text>
-            <text x="0" y="-48" textAnchor="middle" fill="#60A5FA" fontFamily="monospace" fontSize="8" letterSpacing="1">
-              CARE COORDINATION
-            </text>
-            <text x="0" y="42" textAnchor="middle" fill="#94A3B8" fontFamily="monospace" fontSize="8">
-              VECTOR RAG · &lt;4H PIPELINE
-            </text>
-          </g>
-
-          {/* =========================================================================
-              NODE 03: CYBERSECURITY BREACH ONTOLOGY
-              ========================================================================= */}
-          <g transform="translate(320, 510)" filter="url(#nodeGlow)">
-            {/* Outer Hexagon / Shield Bracket */}
-            <circle cx="0" cy="0" r="28" fill="#06080F" stroke="#3B82F6" strokeWidth="1.5" />
-            <circle cx="0" cy="0" r="24" fill="#0B0F19" stroke="#60A5FA" strokeWidth="1" strokeDasharray="3 3" />
-            <circle cx="0" cy="0" r="7" fill="#3B82F6" />
-            <circle cx="0" cy="0" r="3" fill="#FFFFFF" />
-
-            {/* Labels */}
-            <text x="0" y="-36" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="9" fontWeight="bold" letterSpacing="0.5">
-              03 // CYBER ONTOLOGY
-            </text>
-            <text x="0" y="-48" textAnchor="middle" fill="#60A5FA" fontFamily="monospace" fontSize="8" letterSpacing="1">
-              SEMANTIC KNOWLEDGE GRAPH
-            </text>
-            <text x="0" y="42" textAnchor="middle" fill="#94A3B8" fontFamily="monospace" fontSize="8">
-              OWL/RDF · 38 AXIOMS
-            </text>
-          </g>
-
-          {/* =========================================================================
-              CENTRAL ARCHITECTURE CORE (INTELLIGENCE HUB)
-              ========================================================================= */}
-          <g transform="translate(320, 320)" filter="url(#coreGlow)">
-            {/* Rotating Segmented Reticle */}
-            <circle cx="0" cy="0" r="42" fill="#06080F" stroke="#3B82F6" strokeWidth="2" strokeDasharray="18 6" />
-            <circle cx="0" cy="0" r="34" fill="#0B0F19" stroke="#60A5FA" strokeWidth="1.5" strokeOpacity="0.8" />
+          <g id="hero-core-system" transform="translate(330, 260)" filter="url(#heroCoreGlow)">
+            {/* Outer Energy Rings */}
+            <circle cx="0" cy="0" r="52" fill="#070D1E" stroke="#3B82F6" strokeWidth="2.5" strokeDasharray="16 6" />
+            <circle cx="0" cy="0" r="42" fill="#0A162E" stroke="#06B6D4" strokeWidth="2" strokeDasharray="6 4" />
             
-            {/* Glowing Core Halo */}
-            <circle cx="0" cy="0" r="22" fill="#2563EB" fillOpacity="0.25" stroke="#3B82F6" strokeWidth="1" />
-            <circle cx="0" cy="0" r="10" fill="#3B82F6" />
-            <circle cx="0" cy="0" r="4" fill="#FFFFFF" />
+            {/* Radiant Core Nucleus */}
+            <circle cx="0" cy="0" r="30" fill="#1D4ED8" fillOpacity="0.4" stroke="#38BDF8" strokeWidth="2" />
+            <circle cx="0" cy="0" r="14" fill="#06B6D4" />
+            <circle cx="0" cy="0" r="5" fill="#FFFFFF" />
 
-            {/* Central Core Label */}
-            <text x="0" y="58" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="9" fontWeight="bold" letterSpacing="1.5">
-              INTELLIGENT SYSTEMS CORE
+            {/* Central Badge Label */}
+            <rect x="-72" y="60" width="144" height="32" rx="8" fill="#070D1E" stroke="#3B82F6" strokeWidth="1.5" />
+            <text x="0" y="75" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="10" fontWeight="bold" letterSpacing="1.2">
+              SYSTEMS CORE
             </text>
-            <text x="0" y="70" textAnchor="middle" fill="#60A5FA" fontFamily="monospace" fontSize="7.5" letterSpacing="1">
+            <text x="0" y="86" textAnchor="middle" fill="#38BDF8" fontFamily="monospace" fontSize="8" fontWeight="bold">
               DETERMINISTIC COMPUTE
             </text>
           </g>
 
         </svg>
       </div>
+
+      {/* Visual Footer Caption */}
+      <div className="relative z-10 mt-3 pt-3 border-t border-white/[0.1] flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-[#94A3B8]">
+        <div className="flex items-center gap-3">
+          <span className="flex items-center gap-1.5 text-white font-medium">
+            <ShieldCheck className="w-4 h-4 text-[#3B82F6]" /> PQC Discovery
+          </span>
+          <span className="flex items-center gap-1.5 text-white font-medium">
+            <Activity className="w-4 h-4 text-[#06B6D4]" /> ML Care Triage
+          </span>
+          <span className="flex items-center gap-1.5 text-white font-medium">
+            <Cpu className="w-4 h-4 text-[#60A5FA]" /> Cyber Ontology
+          </span>
+        </div>
+        <span className="text-[#38BDF8] text-xs font-semibold">Live Architecture Nexus</span>
+      </div>
+
     </div>
   );
 };

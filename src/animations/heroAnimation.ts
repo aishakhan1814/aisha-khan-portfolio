@@ -23,6 +23,10 @@ export function initHeroAnimations(): HeroAnimationCleanup {
         '#hero-cta',
         '#hero-visual-wrapper',
         '#hero-scroll-indicator',
+        '#hero-core-system',
+        '#hero-branch-crypto',
+        '#hero-branch-care',
+        '#hero-branch-security',
       ],
       { opacity: 1, y: 0, scale: 1 }
     );
@@ -75,8 +79,20 @@ export function initHeroAnimations(): HeroAnimationCleanup {
       .fromTo(
         '#hero-visual-wrapper',
         { opacity: 0, scale: 0.95 },
-        { opacity: 0.9, scale: 1, duration: 1.2, ease: 'power3.out' },
+        { opacity: 1, scale: 1, duration: 1.1, ease: 'power3.out' },
         '-=0.9'
+      )
+      .fromTo(
+        '#hero-core-system',
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.7, ease: 'back.out(1.4)' },
+        '-=0.8'
+      )
+      .fromTo(
+        ['#hero-branch-crypto', '#hero-branch-care', '#hero-branch-security'],
+        { y: 15, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.15, ease: 'power2.out' },
+        '-=0.5'
       )
       .fromTo(
         '#hero-scroll-indicator',
@@ -124,7 +140,7 @@ export function initHeroAnimations(): HeroAnimationCleanup {
       .fromTo('#hero-headline-wrapper h1', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.3')
       .fromTo('#hero-description', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
       .fromTo('#hero-cta', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
-      .fromTo('#hero-visual-wrapper', { opacity: 0 }, { opacity: 0.4, duration: 0.8 }, '-=0.4');
+      .fromTo('#hero-visual-wrapper', { opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.4');
   });
 
   return {

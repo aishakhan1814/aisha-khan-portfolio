@@ -27,7 +27,7 @@ export const EducationSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           
           {/* Main Undergraduate Degree Card */}
-          <div className="lg:col-span-8 p-6 sm:p-7 rounded-xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm flex flex-col justify-between">
+          <div className="spotlight-card lg:col-span-8 p-6 sm:p-7 rounded-xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm flex flex-col justify-between">
             <div>
               <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
                 <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
@@ -38,8 +38,11 @@ export const EducationSection: React.FC = () => {
                 </span>
               </div>
 
-              <div className="text-xs sm:text-sm text-[#93C5FD] font-mono mb-4">
-                Bachelor of Engineering in Computer Science &amp; Engineering
+              <div className="text-xs sm:text-sm text-[#93C5FD] font-mono font-medium mb-1.5">
+                Bachelor of Engineering in Computer Science and Engineering (Artificial Intelligence and Machine Learning)
+              </div>
+              <div className="text-xs font-mono text-[#64748B] mb-4">
+                Specialization: CSE — Artificial Intelligence and Machine Learning
               </div>
 
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#3B82F6]/30 bg-[#3B82F6]/[0.08] text-xs font-mono mb-5">
@@ -55,7 +58,7 @@ export const EducationSection: React.FC = () => {
           </div>
 
           {/* Secondary & Prior Academic Standing */}
-          <div className="lg:col-span-4 p-6 sm:p-7 rounded-xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm flex flex-col justify-between">
+          <div className="spotlight-card lg:col-span-4 p-6 sm:p-7 rounded-xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 mb-4 pb-2 border-b border-white/[0.06]">
                 <GraduationCap className="w-4 h-4 text-[#3B82F6]" />
@@ -77,11 +80,11 @@ export const EducationSection: React.FC = () => {
 
                 <div className="pt-3 border-t border-white/[0.04]">
                   <div className="flex items-baseline justify-between font-mono mb-1">
-                    <span className="text-white font-medium">Class X (SSC)</span>
-                    <span className="text-[#60A5FA] font-bold">96.7%</span>
+                    <span className="text-white font-medium">ICSE</span>
+                    <span className="text-[#60A5FA] font-bold text-sm">96.7%</span>
                   </div>
                   <span className="text-[#64748B] block font-light">
-                    Secondary School Certificate
+                    Indian Certificate of Secondary Education (ICSE — 96.7%)
                   </span>
                 </div>
               </div>

@@ -97,31 +97,47 @@ a, button, [role="button"], input, select, textarea {
   perspective: 1000px;
 }
 
-/* Card Spotlight Shader Effect */
+/* Card Spotlight Shader Effect — Visual Signature */
 .spotlight-card {
   position: relative;
   overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .spotlight-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   border-radius: inherit;
   background: radial-gradient(
-    600px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
-    rgba(59, 130, 246, 0.08),
-    transparent 60%
+    650px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+    rgba(56, 189, 248, 0.14),
+    rgba(59, 130, 246, 0.07) 35%,
+    transparent 65%
   );
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s ease;
   z-index: 1;
+}
+
+.spotlight-card:hover {
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 0 35px rgba(59, 130, 246, 0.08);
 }
 
 .spotlight-card:hover::before {
   opacity: 1;
+}
+
+/* Touch & Mobile Ambient Fallback */
+@media (hover: none) {
+  .spotlight-card::before {
+    opacity: 0.45;
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(56, 189, 248, 0.09),
+      transparent 70%
+    );
+  }
 }
