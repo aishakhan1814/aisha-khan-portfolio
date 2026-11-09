@@ -84,6 +84,32 @@ export function initHeroAnimations(): HeroAnimationCleanup {
         { opacity: 0.8, duration: 0.6 },
         '-=0.3'
       );
+
+    // Hero scrubbed scroll exit — layered cinematic depth
+    gsap.to('#hero-headline-wrapper', {
+      scrollTrigger: {
+        trigger: '#hero-section',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+      yPercent: -35,
+      opacity: 0.4,
+      ease: 'none',
+    });
+
+    gsap.to('#hero-visual-wrapper', {
+      scrollTrigger: {
+        trigger: '#hero-section',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+      scale: 1.15,
+      rotation: -15,
+      opacity: 0.15,
+      ease: 'none',
+    });
   });
 
   // Mobile Animation Architecture (max-width: 767px)

@@ -96,3 +96,32 @@ a, button, [role="button"], input, select, textarea {
 .perspective-1000 {
   perspective: 1000px;
 }
+
+/* Card Spotlight Shader Effect */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+    rgba(59, 130, 246, 0.08),
+    transparent 60%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}

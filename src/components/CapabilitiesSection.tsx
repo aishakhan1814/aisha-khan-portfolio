@@ -93,7 +93,7 @@ export const CapabilitiesSection: React.FC = () => {
             return (
               <div
                 key={group.title}
-                className="p-6 rounded-xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm flex flex-col justify-between"
+                className="spotlight-card p-6 rounded-xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-white/[0.06]">

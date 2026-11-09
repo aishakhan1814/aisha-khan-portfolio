@@ -84,7 +84,8 @@ export const RakshaiWorkflowVisual: React.FC = () => {
               </div>
               <div className="w-full h-7 rounded-md bg-white/[0.03] p-1 border border-[#3B82F6]/30 relative overflow-hidden">
                 <div
-                  className="h-full rounded bg-gradient-to-r from-[#1D4ED8] to-[#3B82F6] flex items-center justify-end pr-2 text-[10px] font-mono text-white font-bold shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-1000"
+                  id="rakshai-turnaround-bar"
+                  className="h-full rounded bg-gradient-to-r from-[#1D4ED8] to-[#3B82F6] flex items-center justify-end pr-2 text-[10px] font-mono text-white font-bold shadow-[0_0_15px_rgba(59,130,246,0.5)]"
                   style={{ width: '16.6%' }}
                 >
                   &lt;4h

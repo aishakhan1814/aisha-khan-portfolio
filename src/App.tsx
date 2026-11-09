@@ -38,9 +38,28 @@ export const App: React.FC = () => {
       }
     }, 60);
 
+    // Dynamic mouse-following radial spotlight on cards
+    const handlePointerMove = (e: PointerEvent) => {
+      const cards = document.querySelectorAll('.spotlight-card');
+      cards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        if (
+          e.clientX >= rect.left - 60 &&
+          e.clientX <= rect.right + 60 &&
+          e.clientY >= rect.top - 60 &&
+          e.clientY <= rect.bottom + 60
+        ) {
+          (card as HTMLElement).style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          (card as HTMLElement).style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        }
+      });
+    };
+    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+
     return () => {
       isCancelled = true;
       clearTimeout(timer);
+      window.removeEventListener('pointermove', handlePointerMove);
       if (heroAnimation) heroAnimation.revert();
       if (projectsAnimation) projectsAnimation.revert();
       if (capabilitiesAnimation) capabilitiesAnimation.revert();

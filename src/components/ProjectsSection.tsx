@@ -41,7 +41,7 @@ export const ProjectsSection: React.FC = () => {
             ========================================================================= */}
         <article
           id="project-sentriq"
-          className="mb-20 md:mb-32 p-6 sm:p-8 md:p-10 rounded-2xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm relative overflow-hidden"
+          className="spotlight-card mb-20 md:mb-32 p-6 sm:p-8 md:p-10 rounded-2xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#3B82F6]/50 to-transparent" />
 
@@ -140,7 +140,7 @@ export const ProjectsSection: React.FC = () => {
             ========================================================================= */}
         <article
           id="project-rakshai"
-          className="mb-20 md:mb-32 p-6 sm:p-8 md:p-10 rounded-2xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm relative overflow-hidden"
+          className="spotlight-card mb-20 md:mb-32 p-6 sm:p-8 md:p-10 rounded-2xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#3B82F6]/50 to-transparent" />
 
@@ -252,7 +252,7 @@ export const ProjectsSection: React.FC = () => {
             ========================================================================= */}
         <article
           id="project-ontology"
-          className="p-6 sm:p-8 md:p-10 rounded-2xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm relative overflow-hidden"
+          className="spotlight-card p-6 sm:p-8 md:p-10 rounded-2xl border border-white/[0.08] bg-[#0B0F19]/60 backdrop-blur-sm relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#3B82F6]/50 to-transparent" />
 

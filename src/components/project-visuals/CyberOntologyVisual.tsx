@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Trophy } from 'lucide-react';
 
 export const CyberOntologyVisual: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(1);
+  const [userInteracted, setUserInteracted] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // 2 Simulated Attack Demonstration Scenarios
   const scenarioSteps = [
@@ -12,8 +14,51 @@ export const CyberOntologyVisual: React.FC = () => {
     { step: 4, label: '4. SPARQL Remediation', detail: 'Ontology infers credential isolation and automated firewall policy' },
   ];
 
+  // Auto-play sequential attack traversal on entering viewport (~3s total)
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    let timerId: NodeJS.Timeout | null = null;
+    let stepCount = 1;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && !userInteracted) {
+          const runStep = () => {
+            if (userInteracted) return;
+            if (stepCount < 4) {
+              stepCount += 1;
+              setActiveStep(stepCount);
+              timerId = setTimeout(runStep, 800);
+            }
+          };
+          timerId = setTimeout(runStep, 700);
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      if (timerId) clearTimeout(timerId);
+    };
+  }, [userInteracted]);
+
+  const handleStepSelect = (step: number) => {
+    setUserInteracted(true);
+    setActiveStep(step);
+  };
+
   return (
-    <div className="w-full rounded-xl border border-white/[0.08] bg-[#0B0F19]/90 p-5 sm:p-6 backdrop-blur-md">
+    <div
+      ref={containerRef}
+      id="cyber-ontology-visual"
+      className="w-full rounded-xl border border-white/[0.08] bg-[#0B0F19]/90 p-5 sm:p-6 backdrop-blur-md"
+    >
       
       {/* Top Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/[0.06] mb-5">
@@ -118,10 +163,11 @@ export const CyberOntologyVisual: React.FC = () => {
             <button
               key={s.step}
               type="button"
-              onClick={() => setActiveStep(s.step)}
+              data-step={s.step}
+              onClick={() => handleStepSelect(s.step)}
               className={`p-2 rounded text-left font-mono transition-all border ${
                 activeStep === s.step
-                  ? 'border-[#3B82F6] bg-[#3B82F6]/15 text-white'
+                  ? 'border-[#3B82F6] bg-[#3B82F6]/15 text-white shadow-[0_0_12px_rgba(59,130,246,0.25)]'
                   : 'border-white/[0.04] bg-white/[0.01] text-[#94A3B8] hover:border-white/10'
               }`}
             >

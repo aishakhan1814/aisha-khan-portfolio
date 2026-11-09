@@ -28,13 +28,14 @@ export const SentriqPipelineVisual: React.FC = () => {
       </div>
 
       {/* 5-Stage Interactive Ingestion Bus */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-6">
+      <div id="sentriq-stages-bus" className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-6">
         {pipelineStages.map((stage) => (
           <button
             key={stage.id}
             type="button"
+            data-stage={stage.id}
             onClick={() => setSelectedNode(stage.id)}
-            className={`p-2.5 rounded-lg text-left transition-all border text-xs font-mono ${
+            className={`sentriq-stage-btn p-2.5 rounded-lg text-left transition-all border text-xs font-mono ${
               selectedNode === stage.id
                 ? 'border-[#3B82F6] bg-[#3B82F6]/15 text-white shadow-[0_0_15px_rgba(59,130,246,0.3)]'
                 : 'border-white/[0.08] bg-white/[0.02] text-[#94A3B8] hover:border-white/20 hover:text-white'
@@ -47,7 +48,7 @@ export const SentriqPipelineVisual: React.FC = () => {
       </div>
 
       {/* Connected Cryptographic Dependency & Risk Graph SVG */}
-      <div className="relative rounded-lg border border-white/[0.06] bg-[#06080F] p-4 overflow-hidden">
+      <div id="sentriq-visual-container" className="relative rounded-lg border border-white/[0.06] bg-[#06080F] p-4 overflow-hidden">
         <div className="text-[10px] font-mono text-[#64748B] uppercase tracking-wider mb-2 flex items-center justify-between">
           <span>Cryptographic Component &amp; Migration Graph</span>
           <span className="text-[#60A5FA]">Interactive Architecture</span>
@@ -65,50 +66,85 @@ export const SentriqPipelineVisual: React.FC = () => {
             </linearGradient>
           </defs>
 
-          {/* Dependency Connections */}
-          <path d="M 120 70 C 180 70, 220 110, 280 110" stroke="url(#flowVulnerable)" strokeWidth="1.5" strokeDasharray="3 3" />
-          <path d="M 120 150 C 180 150, 220 110, 280 110" stroke="url(#flowVulnerable)" strokeWidth="1.5" strokeDasharray="3 3" />
-          <path d="M 280 110 L 400 110" stroke="#3B82F6" strokeWidth="2" />
-          <path d="M 400 110 C 450 110, 480 70, 520 70" stroke="url(#flowSafe)" strokeWidth="1.5" />
-          <path d="M 400 110 C 450 110, 480 150, 520 150" stroke="url(#flowSafe)" strokeWidth="1.5" />
+          {/* Dependency Connections with SVG stroke animation classes */}
+          <path
+            className="sentriq-svg-conduit"
+            d="M 120 70 C 180 70, 220 110, 280 110"
+            stroke="url(#flowVulnerable)"
+            strokeWidth="1.5"
+            strokeDasharray="300"
+            strokeDashoffset="0"
+          />
+          <path
+            className="sentriq-svg-conduit"
+            d="M 120 150 C 180 150, 220 110, 280 110"
+            stroke="url(#flowVulnerable)"
+            strokeWidth="1.5"
+            strokeDasharray="300"
+            strokeDashoffset="0"
+          />
+          <path
+            className="sentriq-svg-conduit"
+            d="M 280 110 L 400 110"
+            stroke="#3B82F6"
+            strokeWidth="2"
+            strokeDasharray="150"
+            strokeDashoffset="0"
+          />
+          <path
+            className="sentriq-svg-conduit pqc-conduit"
+            d="M 400 110 C 450 110, 480 70, 520 70"
+            stroke="url(#flowSafe)"
+            strokeWidth="1.5"
+            strokeDasharray="200"
+            strokeDashoffset="0"
+          />
+          <path
+            className="sentriq-svg-conduit pqc-conduit"
+            d="M 400 110 C 450 110, 480 150, 520 150"
+            stroke="url(#flowSafe)"
+            strokeWidth="1.5"
+            strokeDasharray="200"
+            strokeDashoffset="0"
+          />
 
           {/* Node 1: RSA-2048 (Vulnerable) */}
-          <g transform="translate(120, 70)">
+          <g id="sentriq-node-rsa" transform="translate(120, 70)">
             <circle cx="0" cy="0" r="22" fill="#0B0F19" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="3 3" />
             <text x="0" y="3" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="8" fontWeight="bold">RSA-2048</text>
             <text x="0" y="-28" textAnchor="middle" fill="#94A3B8" fontFamily="monospace" fontSize="8">LEGACY (Shor)</text>
           </g>
 
           {/* Node 2: ECDH P-256 (Vulnerable) */}
-          <g transform="translate(120, 150)">
+          <g id="sentriq-node-ecdh" transform="translate(120, 150)">
             <circle cx="0" cy="0" r="22" fill="#0B0F19" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="3 3" />
             <text x="0" y="3" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="8" fontWeight="bold">ECDH-256</text>
             <text x="0" y="36" textAnchor="middle" fill="#94A3B8" fontFamily="monospace" fontSize="8">ASYM EXPOSURE</text>
           </g>
 
           {/* Central Ingestion Node: CycloneDX 1.6 CBOM */}
-          <g transform="translate(280, 110)">
+          <g id="cbom-node" transform="translate(280, 110)">
             <rect x="-38" y="-22" width="76" height="44" rx="8" fill="#0B0F19" stroke="#3B82F6" strokeWidth="2" />
             <text x="0" y="-3" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="9" fontWeight="bold">CycloneDX</text>
             <text x="0" y="10" textAnchor="middle" fill="#60A5FA" fontFamily="monospace" fontSize="8">CBOM 1.6</text>
           </g>
 
           {/* Analysis Node: Mosca & QUANTS */}
-          <g transform="translate(400, 110)">
+          <g id="quants-node" transform="translate(400, 110)">
             <rect x="-34" y="-22" width="68" height="44" rx="8" fill="#0B0F19" stroke="#60A5FA" strokeWidth="1.5" />
             <text x="0" y="-3" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="8" fontWeight="bold">QUANTS</text>
             <text x="0" y="10" textAnchor="middle" fill="#93C5FD" fontFamily="monospace" fontSize="8">Score: 8.4</text>
           </g>
 
           {/* Target Migration Node 1: ML-KEM-768 */}
-          <g transform="translate(520, 70)">
+          <g id="pqc-node-kem" className="pqc-target-node" transform="translate(520, 70)">
             <circle cx="0" cy="0" r="24" fill="#0B0F19" stroke="#3B82F6" strokeWidth="2" />
             <text x="0" y="3" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="8" fontWeight="bold">ML-KEM</text>
             <text x="0" y="-30" textAnchor="middle" fill="#60A5FA" fontFamily="monospace" fontSize="8">NIST FIPS 203</text>
           </g>
 
           {/* Target Migration Node 2: ML-DSA-65 */}
-          <g transform="translate(520, 150)">
+          <g id="pqc-node-dsa" className="pqc-target-node" transform="translate(520, 150)">
             <circle cx="0" cy="0" r="24" fill="#0B0F19" stroke="#3B82F6" strokeWidth="2" />
             <text x="0" y="3" textAnchor="middle" fill="#FFFFFF" fontFamily="monospace" fontSize="8" fontWeight="bold">ML-DSA</text>
             <text x="0" y="38" textAnchor="middle" fill="#60A5FA" fontFamily="monospace" fontSize="8">NIST FIPS 204</text>

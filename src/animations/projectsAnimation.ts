@@ -21,6 +21,9 @@ export function initProjectsAnimations(): ProjectsAnimationCleanup {
       ],
       { opacity: 1, y: 0, x: 0, scale: 1 }
     );
+    gsap.set('.sentriq-svg-conduit', { strokeDashoffset: 0 });
+    gsap.set('#rakshai-turnaround-bar', { width: '16.6%' });
+    gsap.set(['#cbom-node', '#quants-node', '#pqc-node-kem', '#pqc-node-dsa'], { opacity: 1, scale: 1 });
     return { revert: () => {} };
   }
 
@@ -60,6 +63,41 @@ export function initProjectsAnimations(): ProjectsAnimationCleanup {
       }
     );
 
+    // SENTRIQ: Progressive Pipeline Assembly scrub
+    const sentriqTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#project-sentriq',
+        start: 'top 75%',
+        end: 'bottom 60%',
+        scrub: 1,
+      },
+    });
+
+    sentriqTl
+      .fromTo(
+        '.sentriq-svg-conduit',
+        { strokeDashoffset: 300 },
+        { strokeDashoffset: 0, duration: 1.5, ease: 'none', stagger: 0.2 }
+      )
+      .fromTo(
+        '#cbom-node',
+        { scale: 0.85, opacity: 0.4 },
+        { scale: 1, opacity: 1, duration: 0.6, ease: 'power2.out' },
+        '-=1.0'
+      )
+      .fromTo(
+        '#quants-node',
+        { scale: 0.85, opacity: 0.4 },
+        { scale: 1, opacity: 1, duration: 0.6, ease: 'power2.out' },
+        '-=0.6'
+      )
+      .fromTo(
+        ['#pqc-node-kem', '#pqc-node-dsa'],
+        { opacity: 0.3, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.8, stagger: 0.2, ease: 'power2.out' },
+        '-=0.4'
+      );
+
     // 3. Project 02: RakshAI
     gsap.fromTo(
       '#project-rakshai',
@@ -73,6 +111,22 @@ export function initProjectsAnimations(): ProjectsAnimationCleanup {
         opacity: 1,
         y: 0,
         duration: 0.8,
+        ease: 'power2.out',
+      }
+    );
+
+    // RakshAI: Turnaround Delta Beam Scrub (100% baseline -> 16.6% <4h speedup)
+    gsap.fromTo(
+      '#rakshai-turnaround-bar',
+      { width: '100%' },
+      {
+        scrollTrigger: {
+          trigger: '#project-rakshai',
+          start: 'top 70%',
+          end: 'center 45%',
+          scrub: 1.2,
+        },
+        width: '16.6%',
         ease: 'power2.out',
       }
     );
@@ -114,6 +168,22 @@ export function initProjectsAnimations(): ProjectsAnimationCleanup {
         }
       );
     });
+
+    // Mobile Turnaround scrub
+    gsap.fromTo(
+      '#rakshai-turnaround-bar',
+      { width: '100%' },
+      {
+        scrollTrigger: {
+          trigger: '#project-rakshai',
+          start: 'top 80%',
+          end: 'center 50%',
+          scrub: 1,
+        },
+        width: '16.6%',
+        ease: 'power2.out',
+      }
+    );
   });
 
   return {

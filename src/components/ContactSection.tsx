@@ -49,23 +49,25 @@ export const ContactSection: React.FC = () => {
 
       <div className="max-w-5xl mx-auto px-6 md:px-10 relative z-10 text-center sm:text-left">
         
-        {/* Eyebrow */}
-        <div className="inline-flex items-center gap-2 mb-6 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.02]">
-          <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-pulse" />
-          <span className="font-mono text-xs text-[#93C5FD] tracking-widest uppercase">
-            05 // Get In Touch
-          </span>
-        </div>
+        <div id="contact-header">
+          {/* Eyebrow */}
+          <div className="inline-flex items-center gap-2 mb-6 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.02]">
+            <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-pulse" />
+            <span className="font-mono text-xs text-[#93C5FD] tracking-widest uppercase">
+              05 // Get In Touch
+            </span>
+          </div>
 
-        {/* Cinematic Closing Statement */}
-        <div className="max-w-3xl mb-12">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.08]">
-            Have a system to build or a problem to solve?{' '}
-            <span className="text-[#3B82F6]">Let's talk.</span>
-          </h2>
-          <p className="mt-6 text-base sm:text-lg text-[#CBD5E1] font-light leading-relaxed">
-            I am open to software engineering opportunities, intelligent systems research, and high-consequence technical collaborations. Reach out directly via electronic mail or explore my code on GitHub.
-          </p>
+          {/* Cinematic Closing Statement */}
+          <div className="max-w-3xl mb-12">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.08]">
+              Have a system to build or a problem to solve?{' '}
+              <span className="text-[#3B82F6]">Let's talk.</span>
+            </h2>
+            <p className="mt-6 text-base sm:text-lg text-[#CBD5E1] font-light leading-relaxed">
+              I am open to software engineering opportunities, intelligent systems research, and high-consequence technical collaborations. Reach out directly via electronic mail or explore my code on GitHub.
+            </p>
+          </div>
         </div>
 
         {/* Master Email Card */}
