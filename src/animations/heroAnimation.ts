@@ -22,13 +22,10 @@ export function initHeroAnimations(): HeroAnimationCleanup {
         '#hero-description',
         '#hero-cta',
         '#hero-visual-wrapper',
+        '#hero-artwork-root',
         '#hero-scroll-indicator',
-        '#hero-core-system',
-        '#hero-branch-crypto',
-        '#hero-branch-care',
-        '#hero-branch-security',
       ],
-      { opacity: 1, y: 0, scale: 1 }
+      { opacity: 1, y: 0, scale: 1, rotation: 0 }
     );
     return { revert: () => {} };
   }
@@ -78,21 +75,9 @@ export function initHeroAnimations(): HeroAnimationCleanup {
       )
       .fromTo(
         '#hero-visual-wrapper',
-        { opacity: 0, scale: 0.95 },
+        { opacity: 0, scale: 0.94 },
         { opacity: 1, scale: 1, duration: 1.1, ease: 'power3.out' },
-        '-=0.9'
-      )
-      .fromTo(
-        '#hero-core-system',
-        { scale: 0.8, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.7, ease: 'back.out(1.4)' },
         '-=0.8'
-      )
-      .fromTo(
-        ['#hero-branch-crypto', '#hero-branch-care', '#hero-branch-security'],
-        { y: 15, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, stagger: 0.15, ease: 'power2.out' },
-        '-=0.5'
       )
       .fromTo(
         '#hero-scroll-indicator',
@@ -101,17 +86,17 @@ export function initHeroAnimations(): HeroAnimationCleanup {
         '-=0.3'
       );
 
-    // Hero scrubbed scroll exit — layered cinematic depth
+    // Hero scrubbed scroll exit — layered cinematic depth without aggressive transforms
     gsap.to('#hero-headline-wrapper', {
       scrollTrigger: {
         trigger: '#hero-section',
         start: 'top top',
         end: 'bottom top',
-        scrub: true,
+        scrub: 1,
       },
-      yPercent: -35,
+      yPercent: -25,
       opacity: 0.4,
-      ease: 'none',
+      ease: 'power1.out',
     });
 
     gsap.to('#hero-visual-wrapper', {
@@ -119,12 +104,11 @@ export function initHeroAnimations(): HeroAnimationCleanup {
         trigger: '#hero-section',
         start: 'top top',
         end: 'bottom top',
-        scrub: true,
+        scrub: 1,
       },
-      scale: 1.15,
-      rotation: -15,
-      opacity: 0.15,
-      ease: 'none',
+      yPercent: -18,
+      opacity: 0.35,
+      ease: 'power1.out',
     });
   });
 
@@ -140,7 +124,7 @@ export function initHeroAnimations(): HeroAnimationCleanup {
       .fromTo('#hero-headline-wrapper h1', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.3')
       .fromTo('#hero-description', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
       .fromTo('#hero-cta', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
-      .fromTo('#hero-visual-wrapper', { opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.4');
+      .fromTo('#hero-visual-wrapper', { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.8 }, '-=0.4');
   });
 
   return {

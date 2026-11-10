@@ -10,13 +10,13 @@ import {
 export const CapabilitiesSection: React.FC = () => {
   const capabilityGroups = [
     {
-      title: 'Languages & Core Foundations',
+      title: 'Languages & Frontend Foundations',
       icon: Code2,
       skills: [
         { name: 'Python', context: 'SENTRIQ, RakshAI' },
-        { name: 'Java', context: 'NPTEL Elite Gold Top 5%' },
-        { name: 'C++', context: 'Core Algorithms' },
-        { name: 'JavaScript & TypeScript', context: 'Frontend & APIs' },
+        { name: 'Java & C++', context: 'OOP & Core Algorithms' },
+        { name: 'JavaScript & TypeScript', context: 'Strict Typing & Web APIs' },
+        { name: 'React', context: 'Responsive Component Architecture' },
         { name: 'SQL', context: 'Relational Schemas' },
         { name: 'Data Structures & Algorithms', context: '450+ LeetCode' },
       ],
@@ -37,7 +37,7 @@ export const CapabilitiesSection: React.FC = () => {
       title: 'Backend, Cloud & Distributed Systems',
       icon: Server,
       skills: [
-        { name: 'React', context: 'Responsive Interfaces' },
+        { name: 'Next.js', context: 'SSR, App Router & Hybrid APIs' },
         { name: 'Node.js & Express', context: 'REST Architecture' },
         { name: 'FastAPI', context: 'High-Performance APIs' },
         { name: 'AWS Suite', context: 'Bedrock, Step Functions, SNS' },

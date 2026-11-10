@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowDown, ArrowUpRight, ShieldCheck, Activity, Cpu } from 'lucide-react';
-import { HeroSystemsVisual } from './HeroSystemsVisual';
+import { HeroArtwork } from './HeroArtwork';
 
 export const Hero: React.FC = () => {
   return (
@@ -105,12 +105,12 @@ export const Hero: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Intelligent Systems Network Interactive Visual */}
+          {/* Right Column: Intelligent Systems 3D Sculpture Artwork */}
           <div
             id="hero-visual-wrapper"
-            className="lg:col-span-6 xl:col-span-6 relative z-30 flex items-center justify-center w-full"
+            className="lg:col-span-6 xl:col-span-6 relative z-30 flex items-center justify-center w-full select-none pointer-events-none"
           >
-            <HeroSystemsVisual />
+            <HeroArtwork />
           </div>
 
         </div>
